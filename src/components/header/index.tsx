@@ -16,20 +16,25 @@ import SearchIcon from "../../assets/search.png";
 import Mic from "../../assets/mic.png";
 import Video from "../../assets/video.png";
 import Notification from "../../assets/sino.png";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
-  menuState: boolean;
-  setMenuState: (menuState: boolean) => void;
+    menuState : boolean;
+  setMenuState: (menuState : boolean) => void;
 }
 
-function Header({ menuState, setMenuState }: IProps) {
+
+function Header({ menuState , setMenuState }: IProps) {
+
+    const navigate = useNavigate()
+
   return (
     <Container>
       <LogoContainer>
-        <ButtonContainer onClick={()=> setMenuState(!menuState)} margin="0 10px 0 0">
+        <ButtonContainer onClick={()=> setMenuState(!menuState )} margin="0 10px 0 0">
           <ButtonIcon alt="" src={HamburgerIcon} />
         </ButtonContainer>
-        <img alt="" src={Logo} style={{ cursor: "pointer", width: "100px" }} />
+        <img alt="" onClick={()=> navigate('/')} src={Logo} style={{ cursor: "pointer", width: "100px" }} />
       </LogoContainer>
 
       <SearchContainer>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Header from "./components/header";
 import Menu from "./components/menu";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -14,12 +14,12 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header menuState={openMenu} setMenuState={setOpenMenu} />
+        <Header menuState ={openMenu} setMenuState={setOpenMenu} />
         <div style={{ width: "100%", display: "flex" }}>
-          <Menu menuState={openMenu} />
-          <div style={{ width: "100%" }}>
+          <Menu menuState ={openMenu} />
+          <div style={{ width: "100%", padding:'50px 70px', boxSizing: 'border-box', display:'flex',justifyContent: 'center'}}>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home menuState ={openMenu}/>} />
               <Route path="/shorts" element={<Shorts />} />
               <Route path="/subscribe" element={<Subscribe />} />
               <Route path="/library" element={<Library />} />

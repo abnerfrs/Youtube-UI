@@ -9,6 +9,8 @@ box-sizing: border-box;
 display: flex;
 align-items: center;
 justify-content: space-between;
+position: sticky;
+top: 0;
 `;
 
 export const LogoContainer = styled.div`
@@ -67,6 +69,11 @@ display: flex;
 justify-content: center;
 align-items: center;
 cursor: pointer;
+
+
+&:hover{
+background-color: #e0e0e0;
+}
 `;
 
 export const HeaderButtons = styled.div`
