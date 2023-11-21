@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/header";
 import Menu from "./components/menu";
 
 function App() {
-  return (
+  
+    const [openMenu, setOpenMenu] = useState(true);
+  
+    return (
     <div className="App">
-      <Header />
-      <div style={{width: '100%', display: 'flex'}}>
-        <Menu/>
-        <div style={{backgroundColor: "blue", width:"100%"}}>
-
-        </div>
+      <Header menuState={openMenu} setMenuState={setOpenMenu}/>
+      <div style={{ width: "100%", display: "flex" }}>
+        <Menu menuState={openMenu}/>
+        <div style={{ backgroundColor: "blue", width: "100%" }}></div>
       </div>
     </div>
   );

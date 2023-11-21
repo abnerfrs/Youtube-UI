@@ -17,11 +17,16 @@ import Mic from "../../assets/mic.png";
 import Video from "../../assets/video.png";
 import Notification from "../../assets/sino.png";
 
-function Header() {
+interface IProps {
+  menuState: boolean;
+  setMenuState: (menuState: boolean) => void;
+}
+
+function Header({ menuState, setMenuState }: IProps) {
   return (
     <Container>
       <LogoContainer>
-        <ButtonContainer margin="0 10px 0 0">
+        <ButtonContainer onClick={()=> setMenuState(!menuState)} margin="0 10px 0 0">
           <ButtonIcon alt="" src={HamburgerIcon} />
         </ButtonContainer>
         <img alt="" src={Logo} style={{ cursor: "pointer", width: "100px" }} />
