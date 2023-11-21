@@ -9,7 +9,6 @@ box-sizing: border-box;
 display: flex;
 align-items: center;
 justify-content: space-between;
-position: fixed;
 `;
 
 export const LogoContainer = styled.div`
