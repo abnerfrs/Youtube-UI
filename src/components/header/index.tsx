@@ -19,22 +19,28 @@ import Notification from "../../assets/sino.png";
 import { useNavigate } from "react-router-dom";
 
 interface IProps {
-    menuState : boolean;
-  setMenuState: (menuState : boolean) => void;
+  menuState: boolean;
+  setMenuState: (menuState: boolean) => void;
 }
 
-
-function Header({ menuState , setMenuState }: IProps) {
-
-    const navigate = useNavigate()
+function Header({ menuState, setMenuState }: IProps) {
+  const navigate = useNavigate();
 
   return (
     <Container>
       <LogoContainer>
-        <ButtonContainer onClick={()=> setMenuState(!menuState )} margin="0 10px 0 0">
+        <ButtonContainer
+          onClick={() => setMenuState(!menuState)}
+          margin="0 10px 0 0"
+        >
           <ButtonIcon alt="" src={HamburgerIcon} />
         </ButtonContainer>
-        <img alt="" onClick={()=> navigate('/')} src={Logo} style={{ cursor: "pointer", width: "100px" }} />
+        <img
+          alt=""
+          onClick={() => navigate("/")}
+          src={Logo}
+          style={{ cursor: "pointer", width: "100px" }}
+        />
       </LogoContainer>
 
       <SearchContainer>
@@ -56,7 +62,9 @@ function Header({ menuState , setMenuState }: IProps) {
         <ButtonContainer margin="0 0 0 10px">
           <ButtonIcon alt="" src={Notification}></ButtonIcon>
         </ButtonContainer>
-        <ButtonContainer margin="0 0 0 10px">A</ButtonContainer>
+        <ButtonContainer margin="0 0 0 10px" onClick={() => navigate('/login')}>
+            A
+            </ButtonContainer>
       </HeaderButtons>
     </Container>
   );
