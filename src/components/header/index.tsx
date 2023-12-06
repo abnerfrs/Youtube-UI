@@ -1,6 +1,7 @@
 import {
   ButtonContainer,
   ButtonIcon,
+  LoginSession,
   SearchInputContainer,
   Container,
   SearchButton,
@@ -11,12 +12,15 @@ import {
 } from "./style";
 
 import HamburgerIcon from "../../assets/hamburger.png";
+import MenuLogin from "../../assets/menulogin.webp";
 import Logo from "../../assets/youtube_logo.png";
 import SearchIcon from "../../assets/search.png";
 import Mic from "../../assets/mic.png";
 import Video from "../../assets/video.png";
 import Notification from "../../assets/sino.png";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/userContext";
 
 interface IProps {
   menuState: boolean;
@@ -24,6 +28,8 @@ interface IProps {
 }
 
 function Header({ menuState, setMenuState }: IProps) {
+  const { login } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   return (
@@ -62,9 +68,16 @@ function Header({ menuState, setMenuState }: IProps) {
         <ButtonContainer margin="0 0 0 10px">
           <ButtonIcon alt="" src={Notification}></ButtonIcon>
         </ButtonContainer>
-        <ButtonContainer margin="0 0 0 10px" onClick={() => navigate('/login')}>
-            A
-            </ButtonContainer>
+        {login?
+        <ButtonContainer margin="0 0 0 10px" onClick={() => navigate("/login")}>
+          A
+        </ButtonContainer>
+        :
+        <LoginSession menustate={menuState} onClick={() => navigate('/login')}>
+          <img alt="" src={MenuLogin}></img>
+          <span>Fazer login</span>
+        </LoginSession>
+    }
       </HeaderButtons>
     </Container>
   );

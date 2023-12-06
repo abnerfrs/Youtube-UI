@@ -78,5 +78,34 @@ background-color: #e0e0e0;
 
 export const HeaderButtons = styled.div`
 display: flex;
-width: 200px;
+width: 270px;
+column-gap: 10px;
+`;
+
+export const LoginSession = styled.div<{ menustate: boolean }>`
+border-radius: 20px;
+border: 1px solid #9a9a9a;
+padding: 0px 15px;
+margin-right: 5px;
+display: flex;
+align-items: center;
+column-gap: 15px;
+cursor: pointer;
+visibility: ${({ menustate }) => menustate ? 'visible' : 'hidden'};
+
+&:hover{
+    background-color: #4887CD73;
+    border: none;
+}
+
+img {
+    width: 25px;
+    
+}
+
+span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3178C6;
+}
 `;

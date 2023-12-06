@@ -11,6 +11,7 @@ box-sizing: border-box;
 padding: 10px 10px 10px 10px;
 position: sticky;
 top: 55px;
+overflow: ${({menustate}) => menustate? 'visible' : 'hidden'};
 
 hr {
     width: 90%;
@@ -47,6 +48,10 @@ span {
 
 export const ButtonIcon = styled.img`
 width: 20px;
+`;
+
+export const TextLogin = styled.p<{menustate: boolean}>`
+visibility: ${({ menustate }) => menustate ? 'visible' : 'hidden'};
 `;
 
 export const LoginSession = styled.div<{ menustate: boolean }>`

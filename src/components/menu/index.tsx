@@ -1,4 +1,4 @@
-import { ButtonIcon, Container, LoginSession, MenuItem } from "./style";
+import { ButtonIcon, Container, LoginSession, MenuItem,TextLogin } from "./style";
 import MenuLogin from "../../assets/menulogin.webp";
 import HomeIcon from "../../assets/botao-de-inicio.png";
 import ShortsIcon from "../../assets/shorts.png";
@@ -6,6 +6,8 @@ import SubscribeIcon from "../../assets/subscribe.png";
 import Me from "../../assets/me.png";
 import Historic from "../../assets/historic.png";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/userContext";
 
 interface sourcesNames {
   name: string;
@@ -35,6 +37,7 @@ interface IProps {
 }
 
 function Menu({ menuState }: IProps) {
+  const { login } = useContext(UserContext);
   const navigate = useNavigate();
 
   return (
@@ -61,18 +64,22 @@ function Menu({ menuState }: IProps) {
         </MenuItem>
       ))}
 
-      { menuState ? (
-        <p>
-          Inicie sessão para gostar de vídeos, fazer comentários e subscrever.
-        </p>
-      ) : (
+      {menuState && login ? (
         ""
+      ) : (
+        <TextLogin menustate={menuState}>
+          Inicie sessão para gostar de vídeos, fazer comentários e subscrever.
+        </TextLogin>
       )}
 
-      <LoginSession menustate={menuState}>
-        <img alt="" src={MenuLogin}></img>
-        <span>Iniciar sessão</span>
-      </LoginSession>
+      {login ? (
+        ""
+      ) : (
+        <LoginSession menustate={menuState} onClick={() => navigate('/login')}>
+          <img alt="" src={MenuLogin}></img>
+          <span>Iniciar sessão</span>
+        </LoginSession>
+      )}
     </Container>
   );
 }
